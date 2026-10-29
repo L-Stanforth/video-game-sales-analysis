@@ -13,3 +13,22 @@ def load_data(file_path):
     except pd.errors.EmptyDataError:
         print(f"Error: The file at {file_path} is empty.")
         return None
+
+# After checking data types it was found that the Year column was being read as a float, which is incorrect. This function, since Pandas reads the N/A values as NaN, replaces those values with 0000 as a placeholder.
+def data_cleaning(data):
+    if data is not None:
+        data["Year"] = data["Year"].fillna(0000)
+        data["Year"] = data["Year"].astype(int)
+    return data
+
+
+def main():
+    if __name__ == "__main__":
+        data = load_data(file_path)
+        data = data_cleaning(data)
+        if data is not None:
+            print(data.head())
+        else:
+            print("Data loading failed. Please check the file path and contents.")
+
+main()
