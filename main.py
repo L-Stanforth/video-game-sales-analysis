@@ -23,7 +23,6 @@ def data_cleaning(data):
 
 
 def main():
-    if __name__ == "__main__":
         data = load_data(file_path)
         data = data_cleaning(data)
         if data is not None:
@@ -31,4 +30,5 @@ def main():
         else:
             print("Data loading failed. Please check the file path and contents.")
 
-main()
+if __name__ == "__main__":
+    main()
